@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test3</title>
+  </head>
+  <body>
+    <h1>หาค่า MIN MAX</h1>
+    <input type="number" id="num1" min="1" max="1000"/>
+    <button onclick="generateInputs()">ตกลง</button>
+    <div id="inputContainer"></div>
+    <button onclick="MinMax()">หาค่า Min และ Max</button>
+    <div id="minMax"></div>
+
+    <script>
+      function generateInputs() {
+        const container = document.getElementById("inputContainer");
+        const inputCount = parseInt(document.getElementById("num1").value);
+        if (isNaN(inputCount) || inputCount <= 0) {
+          alert("กรุณากรอกจำนวนที่มากกว่า 0");
+          return;
+        }
+
+        for (let i = 0; i < inputCount; i++) {
+          const newInput = document.createElement("input");
+          newInput.type = "number";
+          newInput.className = "Input";
+          newInput.placeholder = `กรอกตัวเลขที่ ${i + 1}`;
+          container.appendChild(newInput);
+          container.appendChild(document.createElement("br"));
+        }
+      }
+
+      function MinMax() {
+        const inputs = document.getElementsByClassName("Input");
+        const arr = [];
+        for (let input of inputs) {
+          const value = parseInt(input.value);
+          if (!isNaN(value)) {
+            arr.push(value);
+          }
+        }
+        const min = Math.min(...arr);
+        const max = Math.max(...arr);
+        document.getElementById("minMax").innerText = `ค่า Min: ${min}, ค่า Max: ${max}`;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test1</title>
+  </head>
+  <body>
+    <h1>ตรวจสอบตัวอักษร</h1>
+    <input type="text" id="text" placeholder="กรุณาใส่ตัวอักษร" />
+    <button onclick="CheckCharacter()">ตรวจสอบตัวอักษร</button>
+    <p id="output">Output :</p>
+
+    <script>
+      function CheckCharacter() {
+        const text = document.getElementById("text").value;
+        if (text == text.toLowerCase()) {
+          document.getElementById("output").textContent = ` All Small Letter`;
+        }
+        else if (text == text.toUpperCase()) {
+          document.getElementById("output").textContent = `All Capital Letter`;
+        }
+        else{
+          document.getElementById("output").textContent = `Mix`;
+        }
+      }
+    </script>
+  </body>
+</html>
